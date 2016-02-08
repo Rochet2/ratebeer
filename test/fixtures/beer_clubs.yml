@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  founded: 
   city: MyString
+  founded: 1
 
 two:
   name: MyString
-  founded: 
   city: MyString
+  founded: 1
