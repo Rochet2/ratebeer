@@ -2,3 +2,4 @@
 
 ====Links:====
 * Heroku: https://fast-hollows-5408.herokuapp.com/breweries
+* {<img src="https://travis-ci.org/Rochet2/ratebeer.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/Rochet2/ratebeer]
