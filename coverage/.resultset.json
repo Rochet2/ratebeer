@@ -164,8 +164,12 @@
         1,
         null,
         1,
-        124,
-        104,
+        129,
+        109,
+        null,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -261,6 +265,7 @@
         null
       ],
       "/home/rimi/github/wepa_rb/ratebeer/app/controllers/beers_controller.rb": [
+        1,
         1,
         1,
         1,
@@ -408,13 +413,6 @@
         null,
         null,
         1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
         null,
         1,
         1,
@@ -608,9 +606,10 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
-    "timestamp": 1455128940
+    "timestamp": 1455131700
   }
 }
