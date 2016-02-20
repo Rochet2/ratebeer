@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<% if @place %>
+  <ul>
+    <% Place.rendered_fields.each do |f| %>
+      <li><%= "#{f}: #{@place.send(f)}" %>
+    <% end %>
+  </ul>
+  <iframe src="<%= @place.blogmap %>"></iframe>
+<% else %>
+  <p>No place found</p>
+<% end %>

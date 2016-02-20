@@ -1,0 +1,22 @@
+class PlacesController < ApplicationController
+  def index
+  end
+
+  def show
+    @place = nil
+    if params[:city] and params[:id] then
+      @place = BeermappingApi.places_in(params[:city]).find {
+        |p| p.id == params[:id]
+      }
+    end
+  end
+
+  def search
+    @places = BeermappingApi.places_in(params[:city])
+    if @places.empty?
+      redirect_to places_path, notice: "No locations in #{params[:city]}"
+    else
+      render :index
+    end
+  end
+end

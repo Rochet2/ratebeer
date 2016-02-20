@@ -12,9 +12,10 @@ describe "Beer" do
       sign_in(username:"Pekka", password:"Foobar1")
     end
 
-    describe "and a brewery exists" do
+    describe "and a brewery and a style exist" do
       before :each do
         @brewery = FactoryGirl.create :brewery
+        @style = FactoryGirl.create :style
       end
 
       it "can create beer with valid name" do

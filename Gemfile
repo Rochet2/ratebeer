@@ -16,6 +16,7 @@ group :test do
   gem 'launchy'
   gem 'rspec-its'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 group :production do
@@ -24,6 +25,7 @@ group :production do
    gem 'rspec-rails', '~> 3.0'
 end
 
+gem 'httparty'
 gem 'bcrypt', '~> 3.1.7'
 
 ruby '2.3.0'

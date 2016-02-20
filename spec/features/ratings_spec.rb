@@ -64,7 +64,7 @@ describe "Rating" do
     it "user has favourite beer" do
       visit user_path(user)
 
-      expect(page).to have_content "Favorite style: #{beer1.style}"
+      expect(page).to have_content "Favorite style: #{beer1.style.name}"
     end
 
     it "user has favourite beer" do

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @style.name %></h2>
+
+<p><%= @style.description %></p>
+
+<p>
+  <strong>Beers:</strong>
+  <ul>
+    <% @style.beers.each do |b| %>
+      <li><%= link_to b.name, b %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_style_path(@style) %> |
+<%= link_to 'Back', styles_path %>

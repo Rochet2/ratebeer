@@ -24,10 +24,10 @@ class User < ActiveRecord::Base
 
   def favorite_style
     return nil if ratings.empty?
-    ratings.joins(:beer).group(:style).average(:score).max_by{|k,v| v}.first
-    #ratings.group_by{|r| r.beer.style}.map{
-    #  |k,v| [k, sequence_rating_average(v)]
-    #}.max_by{|k,v| v}.first
+    #ratings.joins(:beer).group(:style).average(:score).max_by{|k,v| v}.first
+    ratings.group_by{|r| r.beer.style}.map{
+      |k,v| [k, sequence_rating_average(v)]
+    }.max_by{|k,v| v}.first
   end
 
   def favorite_brewery

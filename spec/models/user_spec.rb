@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:lager){FactoryGirl.create(:style) }
+  let(:ipa){FactoryGirl.create(:style2) }
+
   it "has the username set correctly" do
     user = User.new username:"Pekka"
 
@@ -57,14 +60,14 @@ RSpec.describe User, type: :model do
     end
 
     it "is the only rated if only one rating" do
-      beer = create_beer_with_rating(user, 10)
+      beer = create_beer_with_rating(user, lager, 10)
 
       expect(user.favorite_beer).to eq(beer)
     end
 
     it "is the one with highest rating if several rated" do
-      create_beers_with_ratings(user, 10, 20, 15, 7, 9)
-      best = create_beer_with_rating(user, 25)
+      create_beers_with_ratings(user, lager, 10, 20, 15, 7, 9)
+      best = create_beer_with_rating(user, lager, 25)
 
       expect(user.favorite_beer).to eq(best)
     end
@@ -82,14 +85,14 @@ RSpec.describe User, type: :model do
     end
 
     it "is the style of the only rated beer if only one rating" do
-      beer = create_beer_with_rating(user, 10)
+      beer = create_beer_with_rating(user, lager, 10)
 
       expect(user.favorite_style).to eq(beer.style)
     end
 
     it "is the style with highest rating average of beers rated" do
-      create_beers_with_ratings(user, 1, 1, 50)
-      best = create_beer_with_rating(user, 40, "IPA")
+      create_beers_with_ratings(user, lager, 1, 1, 50)
+      best = create_beer_with_rating(user, ipa, 40)
 
       expect(user.favorite_style).to eq(best.style)
     end
@@ -107,14 +110,14 @@ RSpec.describe User, type: :model do
     end
 
     it "is the brewery of the only rated beer if only one rating" do
-      beer = create_beer_with_rating(user, 10)
+      beer = create_beer_with_rating(user, lager, 10)
 
       expect(user.favorite_brewery).to eq(beer.brewery)
     end
 
     it "is the brewery with highest rating average of beers rated" do
-      create_beers_with_ratings(user, 10, 10, 20)
-      best = create_beer_with_rating(user, 50, "IPA", FactoryGirl.create(:brewery2))
+      create_beers_with_ratings(user, lager, 10, 10, 20)
+      best = create_beer_with_rating(user, ipa, 50, FactoryGirl.create(:brewery2))
 
       expect(user.favorite_brewery).to eq(best.brewery)
     end
@@ -122,13 +125,13 @@ RSpec.describe User, type: :model do
 
 end # describe User
 
-def create_beers_with_ratings(user, *scores)
+def create_beers_with_ratings(user, style, *scores)
   scores.each do |score|
-    create_beer_with_rating user, score
+    create_beer_with_rating user, style, score
   end
 end
 
-def create_beer_with_rating(user, score = 10, style = "Lager", brewery = nil)
+def create_beer_with_rating(user, style, score = 10, brewery = nil)
   if brewery
     beer = FactoryGirl.create(:beer, brewery:brewery, style:style)
   else
