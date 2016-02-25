@@ -1,11 +1,18 @@
 <h2>List of ratings</h2>
+
+<%= render 'list', name: 'Top beers', list: @top_beers %>
+<%= render 'list', name: 'Top breweries', list: @top_breweries %>
+<%= render 'list', name: 'Top styles', list: @top_styles %>
+<%= render 'list', name: 'Most ratings', list: @top_users %>
+<% if current_user %>
+  <br>
+  <%= link_to "reittaa", new_rating_path, class:"btn btn-success" %>
+  <br>
+  <br>
+<% end %>
 <p>Number of ratings: <%= @ratings.count %>
 <ul>
   <% @ratings.each do |rating| %>
     <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
   <% end %>
 </ul>
-
-<% if current_user %>
-  <%= link_to "reittaa", new_rating_path, class:"btn btn-primary" %>
-<% end %>

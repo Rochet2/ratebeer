@@ -7,10 +7,17 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil if session[:user_id].nil?
-    User.find_by id: session[:user_id]
+    u = User.find_by id: session[:user_id]
+    return nil if u.nil? or u.inactive?
+    return u
   end
 
   def ensure_that_signed_in
     redirect_to signin_path, notice:'you should be signed in' if current_user.nil?
+  end
+
+  def ensure_that_admin
+    self.ensure_that_signed_in
+    redirect_to :back, notice:'you need admin access' if not current_user.admin?
   end
 end

@@ -1,8 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h2>
   <%= @user.username %>
 </h2>
+
+<% if current_user and current_user.admin? %>
+  <% if @user.inactive?  %>
+      <span class="label label-info">inactive</span>
+  <% end %>
+  <%= link_to "change activity", toggle_activity_user_path(@user.id), method: :post, class: "btn btn-danger" %>
+<% end %>
 
 <p>
   Has made <%= pluralize(@user.ratings.count, 'rating') %>
