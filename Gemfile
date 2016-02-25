@@ -20,13 +20,17 @@ group :test do
 end
 
 group :production do
-   gem 'pg'
-   gem 'rails_12factor'
-   gem 'rspec-rails', '~> 3.0'
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 gem 'httparty'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
 
 ruby '2.3.0'
 # Use SCSS for stylesheets
