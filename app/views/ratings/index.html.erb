@@ -1,3 +1,4 @@
+<% cache 'ratingslist', expires_in:10.minutes, skip_digest: true do %>
 <h2>List of ratings</h2>
 
 <%= render 'list', name: 'Top beers', list: @top_beers %>
@@ -16,3 +17,4 @@
     <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
   <% end %>
 </ul>
+<% end %>

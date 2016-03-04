@@ -20,4 +20,5 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to :root
   end
+
 end
